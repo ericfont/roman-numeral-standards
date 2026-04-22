@@ -35,6 +35,10 @@
 			<path d="m0.7 3.3 0.02 2.9 0.76-0.48 0.28-0.36c0.2-0.64-0.18-0.83-0.3-1-0.43-0.048-0.55 0.26-0.72 0.52"
 				fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
 		</symbol>
+
+		<symbol id="single_barline">
+ 			<path d="m1 0 0 8" stroke="#000" stroke-width=".1"/>
+		</symbol>
 	
 	</svg>
 
@@ -66,6 +70,20 @@
 			--foreground-6: light-dark(#600000, #9fffff);
 			--foreground-7: light-dark(#700000, #8fffff);
 		}
+
+		.top-bar-container {
+  display: flex;
+  justify-content: space-between; /* Distributes items to edges and center */
+  align-items: center;           /* Vertically centers buttons if height varies */
+  width: 100%;                   /* Ensures container spans the full page width */
+  padding: 0px;                 /* Optional: adds spacing from the edges */
+  margin: 0px;                 /* Optional: adds spacing from the edges */
+  max-height: 5dvh;
+}
+
+.top-bar-button {
+  height: 100%; /* Stretches to fill parent */
+}
 
 		.background-color-0 {
 			background-color: var(--background-0);
@@ -208,7 +226,7 @@ td { padding: 0 0; }
 
 </head>
 
-<body style="margin: 0;"> <!-- overflow: hidden;"> -->
+<body style="margin: 0; background-color: var(--background-color-0)"> <!-- overflow: hidden;"> -->
 
 	<div id="mainDiv"> <!--  style="height: 100vh; width: 100vw;" -->
 	</div>
@@ -217,20 +235,24 @@ td { padding: 0 0; }
 
 		function selectTD(cell) {
 			numeralNumber++;
-			buildHtmlTable();
+			buildTableHTML();
 		}
 
-		function buildHtmlTable() {
+		function buildTableHTML() {
+
+			
+
+		var nX = 18; // number of measures * 4 + 2
 		var nY = 10;
-		var maxCellHeight = (100 - (nY-1)) / nY;
+		var maxCellHeight = (80 - (nY-1)) / nY;
 
 
-		var htmlTable = `<table style="height: 100dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`; // style="height: 10%;
+		var htmlTable = `<table style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`; // style="height: 10%;
 
 			for (var y = 0; y < nY; y++) {
 
 				var htmlRow = `<tr>`;
-				for (var x = 0; x < 5; x++) {
+				for (var x = 0; x < nX; x++) {
 
 					//htmlRow += `<td>(${x},${y})</td>`;
 					var romanNumeralSVG = ``;
@@ -243,11 +265,36 @@ td { padding: 0 0; }
 							break;
 					}
 
-					htmlRow += `<td onclick="selectTD(this)"><svg viewBox="0 0 8 8" style="max-width: 100%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+					if( x == nX-1 ) {
+						htmlRow += `<td onclick="selectTD(this)">
+								</td>`;
+					}
+					else if( x == 0 ){
+						htmlRow += `<td onclick="selectTD(this)">
+								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+								<use href="#single_barline"></use>
+								</svg>
+								</td>`;
+							}
+					else if( x % 4 == 0 ) {
+						htmlRow += `<td onclick="selectTD(this)">
+								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
 								<use href="#flat"></use>
-								</svg></td>`
+								</svg>
+								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+								<use href="#single_barline"></use>
+								</svg>
+								</td>`;
+							}
+							else {
+						htmlRow += `<td onclick="selectTD(this)"><svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+								<use href="${romanNumeralSVG}"></use>
+								<use href="#extension_7"></use>
+								<use href="#flat"></use>
+								</svg></td>`;
+							}
 				}
 
 				htmlRow += `</tr>`;
@@ -257,7 +304,16 @@ td { padding: 0 0; }
 			}
 		htmlTable += `</tbody></table>`;
 
-		mainDiv.innerHTML = htmlTable;
+		mainDiv.innerHTML = `<div class="top-bar-container">
+  <button class="top-bar-button">Prev Song</button>
+  <button class="top-bar-button">Edit Song</button>
+  <button class="top-bar-button">Select Song</button>
+  <button class="top-bar-button">Random Song</button>
+  <button class="top-bar-button">Next Song</button>
+</div>
+<div class="top-bar-container">
+  <h2>Lyricist</h2><h1>Song Title</h1><h2>Composer</h2>
+  </div>` + htmlTable;
 		}
 
 
@@ -267,7 +323,7 @@ td { padding: 0 0; }
 
 		const mainDiv = document.getElementById("mainDiv");
 
-		buildHtmlTable();
+		buildTableHTML();
 
 	</script>
 
