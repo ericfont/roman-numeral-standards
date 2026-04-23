@@ -280,14 +280,16 @@ table.popupDiv-table td {
 	</div>
 	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
 		<table id="tablePopupDiv" class="popupDiv-table"><tbody>
-			<tr><td onpointerenter="mouseenterPad(this)" onpointerenter="mouseleavePad(this)">m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
-			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td onpointerenter="mouseenterPad(this)" onpointerenter="mouseleavePad(this)">M6</td><td onpointerenter="mouseenterPad(this)" onpointerenter="mouseleavePad(this)">M7</td></tr>
+			<tr><td onpointerdown="pointerdownPad(this)" onpointerdown="mouseleavePad(this)">m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
+			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td onpointerdown="pointerdownPad(this)" onpointerdown="mouseleavePad(this)">M6</td><td onpointerdown="pointerdownPad(this)" onpointerdown="mouseleavePad(this)">M7</td></tr>
 			</tbody></table>
 	</div>
 
 	<script>
 
-		function mouseenterPad(cell) {
+		var selectedCell = null;
+
+		function pointerdownPad(cell) {
   			cell.style.background = "lightblue";			
 		}
 
@@ -295,25 +297,33 @@ table.popupDiv-table td {
   			cell.style.background = "white";
 		}
 
-		function mouseenterTD(cell) {
-  			cell.style.background = "lightblue";
+		function pointerdownTD(cell) {
 
-			const cellRect = cell.getBoundingClientRect();
-			const cellTop = cellRect.top; // The Y coordinate relative to the viewport
+			if( selectedCell == cell ) { // if was selected, then clear selection
+				selectedCell = null;
+				cell.style.background = "white";
+				popupDiv.style.display = "none";
+			}
+			else { // if wasn't selected, then select the cell
+				if( selectedCell != null ) { // clear any previous selection
+					selectedCell.style.background = "white";
+				}
 
-			const tableRect = tableDiv.getBoundingClientRect();
-			const tableTop = tableRect.top;
+				selectedCell = cell;
 
-			const topRelative = cellTop;
+				cell.style.background = "lightblue";
 
-			popupDiv.style.display = "block";
-			popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
-			
-		}
+				const cellRect = cell.getBoundingClientRect();
+				const cellTop = cellRect.top; // The Y coordinate relative to the viewport
 
-		function mouseleaveTD(cell) {
-			popupDiv.style.display = "none";
-  			cell.style.background = "white";
+				const tableRect = tableDiv.getBoundingClientRect();
+				const tableTop = tableRect.top;
+
+				const topRelative = cellTop;
+
+				popupDiv.style.display = "block";
+				popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
+			}
 		}
 
 		function buildTableHTML() {
@@ -344,18 +354,18 @@ table.popupDiv-table td {
 					}
 
 					if( x == nX-1 ) {
-						htmlRow += `<td onpointerenter="mouseenterTD(this)" onpointerleave="mouseleaveTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownTD(this)">
 								</td>`;
 					}
 					else if( x == 0 ){
-						htmlRow += `<td onpointerenter="mouseenterTD(this)" onpointerleave="mouseleaveTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownTD(this)">
 								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="#single_barline"></use>
 								</svg>
 								</td>`;
 							}
 					else if( x % 4 == 0 ) {
-						htmlRow += `<td onpointerenter="mouseenterTD(this)" onpointerleave="mouseleaveTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownTD(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
@@ -367,7 +377,7 @@ table.popupDiv-table td {
 								</td>`;
 							}
 							else {
-						htmlRow += `<td onpointerenter="mouseenterTD(this)" onpointerleave="mouseleaveTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownTD(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
