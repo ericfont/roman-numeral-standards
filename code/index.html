@@ -280,16 +280,15 @@ table.popupDiv-table td {
 	</div>
 	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
 		<table id="tablePopupDiv" class="popupDiv-table"><tbody>
-			<tr><td onmouseenter="mouseenterPad(this)" onmouseleave="mouseleavePad(this)">m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
-			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td onmouseenter="mouseenterPad(this)" onmouseleave="mouseleavePad(this)">M6</td><td onmouseenter="mouseenterPad(this)" onmouseleave="mouseleavePad(this)">M7</td></tr>
+			<tr><td pointerenter="mouseenterPad(this)" pointerenter="mouseleavePad(this)">m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
+			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td pointerenter="mouseenterPad(this)" pointerenter="mouseleavePad(this)">M6</td><td pointerenter="mouseenterPad(this)" pointerenter="mouseleavePad(this)">M7</td></tr>
 			</tbody></table>
 	</div>
 
 	<script>
 
 		function mouseenterPad(cell) {
-  			cell.style.background = "lightblue";
-			
+  			cell.style.background = "lightblue";			
 		}
 
 		function mouseleavePad(cell) {
@@ -345,18 +344,18 @@ table.popupDiv-table td {
 					}
 
 					if( x == nX-1 ) {
-						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td pointerenter="mouseenterTD(this)" pointerleave="mouseleaveTD(this)">
 								</td>`;
 					}
 					else if( x == 0 ){
-						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td pointerenter="mouseenterTD(this)" pointerleave="mouseleaveTD(this)">
 								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="#single_barline"></use>
 								</svg>
 								</td>`;
 							}
 					else if( x % 4 == 0 ) {
-						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td pointerenter="mouseenterTD(this)" pointerleave="mouseleaveTD(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
@@ -368,7 +367,7 @@ table.popupDiv-table td {
 								</td>`;
 							}
 							else {
-						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td pointerenter="mouseenterTD(this)" pointerleave="mouseleaveTD(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
