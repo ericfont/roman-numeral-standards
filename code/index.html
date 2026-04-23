@@ -223,20 +223,76 @@ table {
 
 td { padding: 0 0; }
 
+.tableDiv {
+	position: relative; 
+}
+
+.popupDiv {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  z-index: 10; /* Ensures it stays on top */
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Adds a "floating" effect */
+
+  display: flex;
+  justify-content: space-between; /* Distributes items to edges and center */
+  align-items: center;           /* Vertically centers buttons if height varies */
+  padding: 10px;                 /* Optional: adds spacing from the edges */
+  margin: 10px;                 /* Optional: adds spacing from the edges */
+}
+
 	</style>
 
 </head>
 
 <body style="margin: 0; background-color: var(--background-color-0)"> <!-- overflow: hidden;"> -->
 
-	<div id="mainDiv"> <!--  style="height: 100vh; width: 100vw;" -->
+	<div class="top-bar-container">
+		<button class="top-bar-button">Prev Song</button>
+		<button class="top-bar-button">Edit Song</button>
+		<button class="top-bar-button">Select Song</button>
+		<button class="top-bar-button">Random Song</button>
+		<button class="top-bar-button">Next Song</button>
+	</div>
+	<div class="top-bar-container">
+		<h2>Lyricist</h2>
+		<h1>Song Title</h1>
+		<h2>Composer</h2>
+	</div>
+	<div class="tableDiv" id="tableDiv">
+	</div>
+	<div class="popupDiv" id="popupDiv" style="height: 100px; display: none;">
+		this is a list of numerals
 	</div>
 
 	<script>
 
 		function selectTD(cell) {
-			numeralNumber++;
-			buildTableHTML();
+			const cellRect = cell.getBoundingClientRect();
+			const cellTop = cellRect.top; // The Y coordinate relative to the viewport
+
+			const tableRect = tableDiv.getBoundingClientRect();
+			const tableTop = tableRect.top;
+
+			const topRelative = cellTop;
+
+			popupDiv.style.display = "block";
+			popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height - 20) + 'px';
+			
+		}
+
+		function unselectTD(cell) {
+			popupDiv.style.display = "none";
+		}
+
+		function mouseenterTD(cell) {
+  			cell.style.background = "lightblue";
+		}
+
+		function mouseleaveTD(cell) {
+  			cell.style.background = "white";
 		}
 
 		function buildTableHTML() {
@@ -248,7 +304,7 @@ td { padding: 0 0; }
 		var maxCellHeight = (80 - (nY-1)) / nY;
 
 
-		var htmlTable = `<table style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`; // style="height: 10%;
+		var htmlTable = `<table id="tableDiv" style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`; // style="height: 10%;
 
 			for (var y = 0; y < nY; y++) {
 
@@ -267,30 +323,31 @@ td { padding: 0 0; }
 					}
 
 					if( x == nX-1 ) {
-						htmlRow += `<td onclick="selectTD(this)">
+						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
 								</td>`;
 					}
 					else if( x == 0 ){
-						htmlRow += `<td onclick="selectTD(this)">
-								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="#single_barline"></use>
 								</svg>
 								</td>`;
 							}
 					else if( x % 4 == 0 ) {
-						htmlRow += `<td onclick="selectTD(this)">
-								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
 								<use href="#flat"></use>
 								</svg>
-								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="#single_barline"></use>
 								</svg>
 								</td>`;
 							}
 							else {
-						htmlRow += `<td onclick="selectTD(this)"><svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
+						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
 								<use href="#flat"></use>
@@ -305,16 +362,7 @@ td { padding: 0 0; }
 			}
 		htmlTable += `</tbody></table>`;
 
-		mainDiv.innerHTML = `<div class="top-bar-container">
-  <button class="top-bar-button">Prev Song</button>
-  <button class="top-bar-button">Edit Song</button>
-  <button class="top-bar-button">Select Song</button>
-  <button class="top-bar-button">Random Song</button>
-  <button class="top-bar-button">Next Song</button>
-</div>
-<div class="top-bar-container">
-  <h2>Lyricist</h2><h1>Song Title</h1><h2>Composer</h2>
-  </div>` + htmlTable;
+		tableDiv.innerHTML = htmlTable;
 		}
 
 
@@ -322,7 +370,8 @@ td { padding: 0 0; }
 		var selectX = -1;
 		var selectY = -1;
 
-		const mainDiv = document.getElementById("mainDiv");
+		const tableDiv = document.getElementById("tableDiv");
+		const popupDiv = document.getElementById("popupDiv");
 
 		buildTableHTML();
 
