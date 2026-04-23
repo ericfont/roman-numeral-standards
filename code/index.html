@@ -272,7 +272,9 @@ td { padding: 0 0; }
 
 	<script>
 
-		function selectTD(cell) {
+		function mouseenterTD(cell) {
+  			cell.style.background = "lightblue";
+
 			const cellRect = cell.getBoundingClientRect();
 			const cellTop = cellRect.top; // The Y coordinate relative to the viewport
 
@@ -286,15 +288,8 @@ td { padding: 0 0; }
 			
 		}
 
-		function unselectTD(cell) {
-			popupDiv.style.display = "none";
-		}
-
-		function mouseenterTD(cell) {
-  			cell.style.background = "lightblue";
-		}
-
 		function mouseleaveTD(cell) {
+			popupDiv.style.display = "none";
   			cell.style.background = "white";
 		}
 
@@ -326,18 +321,18 @@ td { padding: 0 0; }
 					}
 
 					if( x == nX-1 ) {
-						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
 								</td>`;
 					}
 					else if( x == 0 ){
-						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
 								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="#single_barline"></use>
 								</svg>
 								</td>`;
 							}
 					else if( x % 4 == 0 ) {
-						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
@@ -349,7 +344,7 @@ td { padding: 0 0; }
 								</td>`;
 							}
 							else {
-						htmlRow += `<td onmousedown="selectTD(this)" onmouseup="unselectTD(this)" onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
+						htmlRow += `<td onmouseenter="mouseenterTD(this)" onmouseleave="mouseleaveTD(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
