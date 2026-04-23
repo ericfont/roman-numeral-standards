@@ -1,441 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-	<svg style="display: none">
-
-		<symbol id="roman_numeral_capital_7">
-			<g stroke="#000" stroke-linecap="round" stroke-width=".1">
-				<path d="m1.4 1h5.3" />
-				<path d="m1.5 7 5.2-0.01" />
-			</g>
-			<g stroke="#000" stroke-width=".5">
-				<path d="m2 1 1 6" />
-				<path d="m4.2 1-1 6" stroke-width=".1" />
-				<path d="m5 1v6" />
-				<path d="m6.1 1v6" />
-			</g>
-		</symbol>
-	
-		<symbol id="roman_numeral_capital_6">
-			<g stroke="#000" stroke-linecap="round" stroke-width=".1">
-				<path d="m1.3 1h5.3" />
-				<path d="m1.3 7 5.3-0" />
-				<path d="m4 1-.8 6" />
-			</g>
-			<g stroke="#000" stroke-width=".5">
-				<path d="m2 1 1 6" />
-				<path d="m5.6 1 0 6" />
-			</g>
-		</symbol>
-	
-		<symbol id="extension_7">
-			<path d="m6.8 0.35h0.91l-0.45 1.8" fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
-		</symbol>
-	
-		<symbol id="flat">
-			<path d="m0.7 3.3 0.02 2.9 0.76-0.48 0.28-0.36c0.2-0.64-0.18-0.83-0.3-1-0.43-0.048-0.55 0.26-0.72 0.52"
-				fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
-		</symbol>
-
-		<symbol id="single_barline">
- 			<path d="m1 0 0 8" stroke="#000" stroke-width=".1"/>
-		</symbol>
-	
-	</svg>
-
-<head>
-	<base href="https://romanjazz.com/" target="_blank">
-	<title>RomanJazz: rediscover the forgotten ancient Roman method for understanding jazz songs!</title>
-
-	<style>
-		:root {
-			color-scheme: light dark;
-			--semi-transparent-gray-color: rgba(128, 128, 128, 0.5);
-			--fully-transparent-color: rgba(128, 128, 128, 0);
-			--current-gray-button-color: rgba(128, 128, 128, 0.5);
-
-			--background-0: light-dark(#ffffff, #000000);
-			--background-1: light-dark(#efefef, #100000);
-			--background-2: light-dark(#dfdfdf, #200000);
-			--background-3: light-dark(#cfcfcf, #300000);
-			--background-4: light-dark(#bfbfbf, #400000);
-			--background-5: light-dark(#afafaf, #500000);
-			--background-6: light-dark(#8f8f8f, #600000);
-			--background-7: light-dark(#7f7f7f, #700000);
-			/* now we are at pure middle grey, already defined as "grey" */
-			--foreground-0: light-dark(#000000, #ffffff);
-			--foreground-1: light-dark(#100000, #efffff);
-			--foreground-2: light-dark(#200000, #dfffff);
-			--foreground-3: light-dark(#300000, #cfffff);
-			--foreground-4: light-dark(#400000, #bfffff);
-			--foreground-5: light-dark(#500000, #afffff);
-			--foreground-6: light-dark(#600000, #9fffff);
-			--foreground-7: light-dark(#700000, #8fffff);
-		}
-
-		.top-bar-container {
-  display: flex;
-  justify-content: space-between; /* Distributes items to edges and center */
-  align-items: center;           /* Vertically centers buttons if height varies */
-  width: 100%;                   /* Ensures container spans the full page width */
-  padding: 0px;                 /* Optional: adds spacing from the edges */
-  margin: 0px;                 /* Optional: adds spacing from the edges */
-  max-height: 5dvh;
-}
-
-.top-bar-button {
-  height: 100%; /* Stretches to fill parent */
-  max-width: 25%; /* no more than 5 buttons */
-}
-
-		.background-color-0 {
-			background-color: var(--background-0);
-		}
-
-		.background-color-1 {
-			background-color: var(--background-1);
-		}
-
-		.background-color-2 {
-			background-color: var(--background-2);
-		}
-
-		.background-color-3 {
-			background-color: var(--background-3);
-		}
-
-		.background-color-4 {
-			background-color: var(--background-4);
-		}
-
-		.background-color-5 {
-			background-color: var(--background-5);
-		}
-
-		.background-color-6 {
-			background-color: var(--background-6);
-		}
-
-		.background-color-7 {
-			background-color: var(--background-7);
-		}
-
-		.foreground-color-0 {
-			color: var(--foreground-0);
-		}
-
-		.foreground-color-1 {
-			color: var(--foreground-1);
-		}
-
-		.foreground-color-2 {
-			color: var(--foreground-2);
-		}
-
-		.foreground-color-3 {
-			color: var(--foreground-3);
-		}
-
-		.foreground-color-4 {
-			color: var(--foreground-4);
-		}
-
-		.foreground-color-5 {
-			color: var(--foreground-5);
-		}
-
-		.foreground-color-6 {
-			color: var(--foreground-6);
-		}
-
-		.foreground-color-7 {
-			color: var(--foreground-7);
-		}
-
-		/*	td {
-			border: 0px;
-			padding: 0px;
-			padding-top: 8px;
-			white-space: nowrap;
-			position: relative;
-		} */
-
-		.left-of-td {
-			position: absolute;
-			/* Move freely relative to parent */
-			right: 100%;
-			/* Push outside parent's left boundary */
-			bottom: 0%;
-			/* Align with the top of parent */
-		}
-
-		.section-name {
-			padding: 1px;
-			border: 1px solid light-dark(#000000, #ffffff);
-		}
-
-		.right-justify {
-			text-align: right;
-		}
-
-		.center-justify {
-			text-align: center;
-		}
-
-		.right-bar {
-			border-right: 1px solid grey;
-			padding-right: 4px
-		}
-
-		.left-bar {
-			border-left: 1px solid grey;
-			padding-left: 4px
-		}
-
-		/* The Grid Container */
-		.container {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
-			/* equal columns */
-			/*row-gap: 1em;*/
-			/*grid-template-rows: repeat(2, 50vh); /* equal columns */
-			width: 100vw;
-			height: 100vh;
-			margin: 0;
-		}
-
-		.chord-cell {
-			display: grid;
-			grid-template-rows: 1fr 1fr;
-			/* Splits the cell into two equal halves */
-			height: 100%;
-		}
-
-		/*svg {
-    display: block;
-	object-fit: fill;
-    width: 100%;
-    height: 100%;
-}*/
-
-table {
-  border-collapse: separate;
-  border-spacing: 0 0; /*1vh 1vh; /* horizontal, vertical spacing */
-}
-
-td { padding: 0 0; }
-
-.tableDiv {
-	position: relative; 
-}
-
-.popupDiv {
-  position: absolute;
-  bottom: 0;
-  width: 99%;
-  z-index: 10; /* Ensures it stays on top */
-  background-color: white;
-  border: 1px solid black;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.5); /* Adds a "floating" effect */
-
-  display: flex;
-  justify-content: space-between; /* Distributes items to edges and center */
-  align-items: center;           /* Vertically centers buttons if height varies */
-  padding: 1px;                 /* Optional: adds spacing from the edges */
-  margin: 1px;                 /* Optional: adds spacing from the edges */
-}
-
-.tablePad {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	border-collapse: separate;
-    background-color: white;
-	table-layout: fixed;
-}
-
-table.tablePad td {
-    padding: 0px;
-    margin: 0px;
-	border: 1px solid #9f981a;
-	text-align: center;
-	user-select: none;
-}
-
-	</style>
-
-</head>
-
-<body style="margin: 0; background-color: var(--background-color-0)"> <!-- overflow: hidden;"> -->
-
-	<div class="top-bar-container">
-		<button class="top-bar-button">Prev Song</button>
-		<button class="top-bar-button">Edit Song</button>
-		<button class="top-bar-button">Select Song</button>
-		<button class="top-bar-button">Random Song</button>
-		<button class="top-bar-button">Next Song</button>
-	</div>
-	<div class="top-bar-container">
-		<h2>Lyricist</h2>
-		<h1>Song Title</h1>
-		<h2>Composer</h2>
-	</div>
-	<div class="tableDiv" id="tableDiv">
-	</div>
-	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
-		<table id="tablePad" class="tablePad"><tbody></tbody></table>
-	</div>
-
-	<script>
-
-		const tableDiv = document.getElementById("tableDiv");
-		const popupDiv = document.getElementById("popupDiv");
-		const tablePad = document.getElementById("tablePad");
-
-		const padMap = [
-			`♭`, `♯`,
-			`m1`, `M1`,
-			`m2`, `M2`,
-			`m3`, `M3`,
-			`m4`, `M4`,
-			`m5`, `M5`,
-			`m6`, `M6`,
-			`m7`, `M7`,
-			`V7of_`, `modulate`,
-			`ABC`, `123`,
-			`extension`, `barline` ];
-
-		for( var padMapRow = 0; padMapRow < 2; padMapRow++ ) {
-			const row = tablePad.insertRow(); // Adds row to the end of the table
-			for( var padMapCol = 0; padMapCol < 11; padMapCol++ ) {
-				const cell = row.insertCell(); // Adds td to the end of the row
-				const index = padMapRow * 11 + padMapCol;
-				cell.textContent = padMap[index];
-				cell.setAttribute(`onpointerdown`, `pdp(this,${index})`);
-				cell.setAttribute(`style`, `background: white`);
-			}
-		}
-
-		var selectedBeatCell = null;
-		var selectedPadCell = null;
-
-		function pdp(cell, index) { // "on Pointer Down for keyPad containing cell at index"
-  			if( cell.style.background == "white" ) {
-				cell.style.background = "lightblue";
-			}
-			else {
-				cell.style.background = "white";
-			}
-		}
-
-		function pointerdownBeat(cell) {
-
-			if( selectedBeatCell == cell ) { // if was selected, then clear selection
-				selectedBeatCell = null;
-				cell.style.background = "white";
-				popupDiv.style.display = "none";
-			}
-			else { // if wasn't selected, then select the cell
-				if( selectedBeatCell != null ) { // clear any previous selection
-					selectedBeatCell.style.background = "white";
-				}
-
-				selectedBeatCell = cell;
-
-				cell.style.background = "lightblue";
-
-				const cellRect = cell.getBoundingClientRect();
-				const cellTop = cellRect.top; // The Y coordinate relative to the viewport
-
-				const tableRect = tableDiv.getBoundingClientRect();
-				const tableTop = tableRect.top;
-
-				const topRelative = cellTop;
-
-				popupDiv.style.display = "block";
-				popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
-			}
-		}
-
-		function buildTableHTML() {
-
-			
-
-		var nX = 18; // number of measures * 4 + 2
-		var nY = 10;
-		var maxCellHeight = (80 - (nY-1)) / nY;
-
-
-		var htmlTable = `<table id="tableDiv" style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`; // style="height: 10%;
-
-			for (var y = 0; y < nY; y++) {
-
-				var htmlRow = `<tr>`;
-				for (var x = 0; x < nX; x++) {
-
-					//htmlRow += `<td>(${x},${y})</td>`;
-					var romanNumeralSVG = ``;
-					switch (numeralNumber) {
-						case 6:
-							romanNumeralSVG = `#roman_numeral_capital_6`;
-							break;
-						case 7:
-							romanNumeralSVG = `#roman_numeral_capital_7`;
-							break;
-					}
-
-					if( x == nX-1 ) {
-						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								</td>`;
-					}
-					else if( x == 0 ){
-						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
-								<use href="#single_barline"></use>
-								</svg>
-								</td>`;
-							}
-					else if( x % 4 == 0 ) {
-						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;" >
-								<use href="${romanNumeralSVG}"></use>
-								<use href="#extension_7"></use>
-								<use href="#flat"></use>
-								</svg>
-								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
-								<use href="#single_barline"></use>
-								</svg>
-								</td>`;
-							}
-							else {
-						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
-								<use href="${romanNumeralSVG}"></use>
-								<use href="#extension_7"></use>
-								<use href="#flat"></use>
-								</svg></td>`;
-							}
-				}
-
-				htmlRow += `</tr>`;
-
-				htmlTable += htmlRow;
-
-			}
-		htmlTable += `</tbody></table>`;
-
-		tableDiv.innerHTML = htmlTable;
-		}
-
-
-		var numeralNumber = 6;
-		var selectX = -1;
-		var selectY = -1;
-
-
-		buildTableHTML();
-
-	</script>
-
-</body>
-
+  <svg style="display: none">
+    <symbol id="roman_numeral_capital_7">
+      <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+        <path d="m1.4 1h5.3" />
+        <path d="m1.5 7 5.2-0.01" />
+      </g>
+      <g stroke="#000" stroke-width=".5">
+        <path d="m2 1 1 6" />
+        <path d="m4.2 1-1 6" stroke-width=".1" />
+        <path d="m5 1v6" />
+        <path d="m6.1 1v6" />
+      </g>
+    </symbol>
+
+    <symbol id="roman_numeral_capital_6">
+      <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+        <path d="m1.3 1h5.3" />
+        <path d="m1.3 7 5.3-0" />
+        <path d="m4 1-.8 6" />
+      </g>
+      <g stroke="#000" stroke-width=".5">
+        <path d="m2 1 1 6" />
+        <path d="m5.6 1 0 6" />
+      </g>
+    </symbol>
+
+    <symbol id="extension_7">
+      <path d="m6.8 0.35h0.91l-0.45 1.8" fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
+    </symbol>
+
+    <symbol id="flat">
+      <path d="m0.7 3.3 0.02 2.9 0.76-0.48 0.28-0.36c0.2-0.64-0.18-0.83-0.3-1-0.43-0.048-0.55 0.26-0.72 0.52"
+        fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
+    </symbol>
+
+    <symbol id="single_barline">
+      <path d="m1 0 0 8" stroke="#000" stroke-width=".1"/>
+    </symbol>
+  </svg>
+
+  <head>
+    <base href="https://romanjazz.com/" target="_blank">
+    <title>RomanJazz: rediscover the forgotten ancient Roman method for understanding jazz songs!</title>
+
+    <style>
+      :root {
+        color-scheme: light dark;
+        --semi-transparent-gray-color: rgba(128, 128, 128, 0.5);
+        --fully-transparent-color: rgba(128, 128, 128, 0);
+        --current-gray-button-color: rgba(128, 128, 128, 0.5);
+
+        --background-0: light-dark(#ffffff, #000000);
+        --background-1: light-dark(#efefef, #100000);
+        --background-2: light-dark(#dfdfdf, #200000);
+        --background-3: light-dark(#cfcfcf, #300000);
+        --background-4: light-dark(#bfbfbf, #400000);
+        --background-5: light-dark(#afafaf, #500000);
+        --background-6: light-dark(#8f8f8f, #600000);
+        --background-7: light-dark(#7f7f7f, #700000);
+        --foreground-0: light-dark(#000000, #ffffff);
+        --foreground-1: light-dark(#100000, #efffff);
+        --foreground-2: light-dark(#200000, #dfffff);
+        --foreground-3: light-dark(#300000, #cfffff);
+        --foreground-4: light-dark(#400000, #bfffff);
+        --foreground-5: light-dark(#500000, #afffff);
+        --foreground-6: light-dark(#600000, #9fffff);
+        --foreground-7: light-dark(#700000, #8fffff);
+      }
+
+      .top-bar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        max-height: 5dvh;
+      }
+
+      .top-bar-button {
+        height: 100%;
+        max-width: 25%;
+      }
+
+      .background-color-0 { background-color: var(--background-0); }
+      .background-color-1 { background-color: var(--background-1); }
+      .background-color-2 { background-color: var(--background-2); }
+      .background-color-3 { background-color: var(--background-3); }
+      .background-color-4 { background-color: var(--background-4); }
+      .background-color-5 { background-color: var(--background-5); }
+      .background-color-6 { background-color: var(--background-6); }
+      .background-color-7 { background-color: var(--background-7); }
+
+      .foreground-color-0 { color: var(--foreground-0); }
+      .foreground-color-1 { color: var(--foreground-1); }
+      .foreground-color-2 { color: var(--foreground-2); }
+      .foreground-color-3 { color: var(--foreground-3); }
+      .foreground-color-4 { color: var(--foreground-4); }
+      .foreground-color-5 { color: var(--foreground-5); }
+      .foreground-color-6 { color: var(--foreground-6); }
+      .foreground-color-7 { color: var(--foreground-7); }
+
+      .left-of-td {
+        position: absolute;
+        right: 100%;
+        bottom: 0%;
+      }
+
+      .section-name {
+        padding: 1px;
+        border: 1px solid light-dark(#000000, #ffffff);
+      }
+
+      .right-justify { text-align: right; }
+      .center-justify { text-align: center; }
+
+      .right-bar {
+        border-right: 1px solid grey;
+        padding-right: 4px;
+      }
+
+      .left-bar {
+        border-left: 1px solid grey;
+        padding-left: 4px;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .chord-cell {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        height: 100%;
+      }
+
+      table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      td {
+        padding: 0;
+      }
+
+      .tableDiv {
+        position: relative;
+      }
+
+      .popupDiv {
+        position: absolute;
+        bottom: 0;
+        width: 99%;
+        z-index: 10;
+        background-color: white;
+        border: 1px solid black;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1px;
+        margin: 1px;
+      }
+
+      .tablePad {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        border-collapse: separate;
+        background-color: white;
+        table-layout: fixed;
+      }
+
+      table.tablePad td {
+        padding: 0;
+        margin: 0;
+        border: 1px solid #9f981a;
+        text-align: center;
+        user-select: none;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0; background-color: var(--background-color-0)">
+    <div class="top-bar-container">
+      <button class="top-bar-button">Prev Song</button>
+      <button class="top-bar-button">Edit Song</button>
+      <button class="top-bar-button">Select Song</button>
+      <button class="top-bar-button">Random Song</button>
+      <button class="top-bar-button">Next Song</button>
+    </div>
+
+    <div class="top-bar-container">
+      <h2>Lyricist</h2>
+      <h1>Song Title</h1>
+      <h2>Composer</h2>
+    </div>
+
+    <div class="tableDiv" id="tableDiv"></div>
+
+    <div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
+      <table id="tablePad" class="tablePad"><tbody></tbody></table>
+    </div>
+
+    <script>
+      const tableDiv = document.getElementById("tableDiv");
+      const popupDiv = document.getElementById("popupDiv");
+      const tablePad = document.getElementById("tablePad");
+
+      const padMap = [
+        `♭`, `♯`,
+        `m1`, `M1`,
+        `m2`, `M2`,
+        `m3`, `M3`,
+        `m4`, `M4`,
+        `m5`, `M5`,
+        `m6`, `M6`,
+        `m7`, `M7`,
+        `V7of_`, `modulate`,
+        `ABC`, `123`,
+        `extension`, `barline`
+      ];
+
+      for (let padMapRow = 0; padMapRow < 2; padMapRow++) {
+        const row = tablePad.insertRow();
+        for (let padMapCol = 0; padMapCol < 11; padMapCol++) {
+          const cell = row.insertCell();
+          const index = padMapRow + padMapCol * 2;
+          cell.textContent = padMap[index];
+          cell.setAttribute(`onpointerdown`, `pdp(this,${index})`);
+          cell.setAttribute(`style`, `background: white`);
+        }
+      }
+
+      let selectedBeatCell = null;
+      let selectedPadCell = null;
+
+      function pdp(cell, index) {
+        if (cell.style.background === "white") {
+          cell.style.background = "lightblue";
+        } else {
+          cell.style.background = "white";
+        }
+      }
+
+      function pointerdownBeat(cell) {
+        if (selectedBeatCell === cell) {
+          selectedBeatCell = null;
+          cell.style.background = "white";
+          popupDiv.style.display = "none";
+        } else {
+          if (selectedBeatCell !== null) {
+            selectedBeatCell.style.background = "white";
+          }
+
+          selectedBeatCell = cell;
+          cell.style.background = "lightblue";
+
+          const cellRect = cell.getBoundingClientRect();
+          const cellTop = cellRect.top;
+          const tableRect = tableDiv.getBoundingClientRect();
+          const tableTop = tableRect.top;
+
+          popupDiv.style.display = "block";
+          popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
+        }
+      }
+
+      function buildTableHTML() {
+        const nX = 18;
+        const nY = 10;
+        const maxCellHeight = (80 - (nY - 1)) / nY;
+
+        let htmlTable = `<table id="tableDiv" style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`;
+
+        for (let y = 0; y < nY; y++) {
+          let htmlRow = `<tr>`;
+          for (let x = 0; x < nX; x++) {
+            let romanNumeralSVG = ``;
+            switch (numeralNumber) {
+              case 6:
+                romanNumeralSVG = `#roman_numeral_capital_6`;
+                break;
+              case 7:
+                romanNumeralSVG = `#roman_numeral_capital_7`;
+                break;
+            }
+
+            if (x === nX - 1) {
+              htmlRow += `<td onpointerdown="pointerdownBeat(this)"></td>`;
+            } else if (x === 0) {
+              htmlRow += `<td onpointerdown="pointerdownBeat(this)">
+                <svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
+                  <use href="#single_barline"></use>
+                </svg>
+              </td>`;
+            } else if (x % 4 === 0) {
+              htmlRow += `<td onpointerdown="pointerdownBeat(this)">
+                <svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
+                  <use href="${romanNumeralSVG}"></use>
+                  <use href="#extension_7"></use>
+                  <use href="#flat"></use>
+                </svg>
+                <svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
+                  <use href="#single_barline"></use>
+                </svg>
+              </td>`;
+            } else {
+              htmlRow += `<td onpointerdown="pointerdownBeat(this)">
+                <svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
+                  <use href="${romanNumeralSVG}"></use>
+                  <use href="#extension_7"></use>
+                  <use href="#flat"></use>
+                </svg>
+              </td>`;
+            }
+          }
+
+          htmlRow += `</tr>`;
+          htmlTable += htmlRow;
+        }
+        htmlTable += `</tbody></table>`;
+
+        tableDiv.innerHTML = htmlTable;
+      }
+
+      let numeralNumber = 6;
+      let selectX = -1;
+      let selectY = -1;
+
+      buildTableHTML();
+    </script>
+  </body>
 </html>
