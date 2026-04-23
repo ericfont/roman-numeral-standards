@@ -230,7 +230,7 @@ td { padding: 0 0; }
 .popupDiv {
   position: absolute;
   bottom: 0;
-  width: 90%;
+  width: 99%;
   z-index: 10; /* Ensures it stays on top */
   background-color: white;
   border: 1px solid black;
@@ -239,8 +239,28 @@ td { padding: 0 0; }
   display: flex;
   justify-content: space-between; /* Distributes items to edges and center */
   align-items: center;           /* Vertically centers buttons if height varies */
-  padding: 10px;                 /* Optional: adds spacing from the edges */
-  margin: 10px;                 /* Optional: adds spacing from the edges */
+  padding: 1px;                 /* Optional: adds spacing from the edges */
+  margin: 1px;                 /* Optional: adds spacing from the edges */
+}
+
+.popupDiv-table {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	border-collapse: separate;
+}
+
+table.popupDiv-table td {
+    background-color: rgb(255, 255, 196);
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid rgb(149, 132, 0);
+	text-align: center;
+}
+
+table.popupDiv-table td:hover {
+  background-color: blue;
+  color: white;
 }
 
 	</style>
@@ -264,7 +284,7 @@ td { padding: 0 0; }
 	<div class="tableDiv" id="tableDiv">
 	</div>
 	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
-		<table id="tablePopupDiv" style="height: 100%; width: 100%; margin: 0; border-collapse: separate;"><tbody>
+		<table id="tablePopupDiv" class="popupDiv-table"><tbody>
 			<tr><td>m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
 			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td>M6</td><td>M7</td></tr>
 			</tbody></table>
@@ -284,7 +304,7 @@ td { padding: 0 0; }
 			const topRelative = cellTop;
 
 			popupDiv.style.display = "block";
-			popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height - 20) + 'px';
+			popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
 			
 		}
 
