@@ -248,19 +248,14 @@ td { padding: 0 0; }
 	width: 100%;
 	margin: 0;
 	border-collapse: separate;
+    background-color: rgb(255, 255, 196);
 }
 
 table.popupDiv-table td {
-    background-color: rgb(255, 255, 196);
     padding: 0px;
     margin: 0px;
-    border: 1px solid rgb(149, 132, 0);
+  border: 1px solid #9f981a;
 	text-align: center;
-}
-
-table.popupDiv-table td:hover {
-  background-color: blue;
-  color: white;
 }
 
 	</style>
@@ -285,12 +280,21 @@ table.popupDiv-table td:hover {
 	</div>
 	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
 		<table id="tablePopupDiv" class="popupDiv-table"><tbody>
-			<tr><td>m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
-			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td>M6</td><td>M7</td></tr>
+			<tr><td onmouseenter="mouseenterPad(this)" onmouseleave="mouseleavePad(this)">m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
+			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td onmouseenter="mouseenterPad(this)" onmouseleave="mouseleavePad(this)">M6</td><td onmouseenter="mouseenterPad(this)" onmouseleave="mouseleavePad(this)">M7</td></tr>
 			</tbody></table>
 	</div>
 
 	<script>
+
+		function mouseenterPad(cell) {
+  			cell.style.background = "lightblue";
+			
+		}
+
+		function mouseleavePad(cell) {
+  			cell.style.background = "white";
+		}
 
 		function mouseenterTD(cell) {
   			cell.style.background = "lightblue";
