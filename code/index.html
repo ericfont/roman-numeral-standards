@@ -256,6 +256,7 @@ table.popupDiv-table td {
     margin: 0px;
   border: 1px solid #9f981a;
 	text-align: center;
+	user-select: none;
 }
 
 	</style>
@@ -280,36 +281,33 @@ table.popupDiv-table td {
 	</div>
 	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
 		<table id="tablePopupDiv" class="popupDiv-table"><tbody>
-			<tr><td onpointerdown="pointerdownPad(this)" onpointerdown="mouseleavePad(this)">m1</td><td>m2</td><td>m3</td><td>m4</td><td>m5</td><td>m6</td><td>m7</td></tr>
-			<tr><td>M1</td><td>M2</td><td>M3</td><td>M4</td><td>M5</td><td onpointerdown="pointerdownPad(this)" onpointerdown="mouseleavePad(this)">M6</td><td onpointerdown="pointerdownPad(this)" onpointerdown="mouseleavePad(this)">M7</td></tr>
+			<tr><td onpointerdown="pdp(this,1)">#</td><td onpointerdown="pdp(this,2)">m1</td><td onpointerdown="pdp(this,3)">m2</td><td onpointerdown="pdp(this,4)">m3</td><td onpointerdown="pdp(this,5)">m4</td><td onpointerdown="pdp(this,6)">m5</td><td onpointerdown="pdp(this,7)">m6</td><td onpointerdown="pdp(this,8)">m7</td><td onpointerdown="pdp(this,9)">|</td></tr>
+			<tr><td onpointerdown="pdp(this,11)">b</td><td onpointerdown="pdp(this,12)">M1</td><td onpointerdown="pdp(this,13)">M2</td><td onpointerdown="pdp(this,14)">M3</td><td onpointerdown="pdp(this,15)">M4</td><td onpointerdown="pdp(this,16)">M5</td><td onpointerdown="pdp(this,17)">M6</td><td onpointerdown="pdp(this,18)">M7</td></tr>
 			</tbody></table>
 	</div>
 
 	<script>
 
-		var selectedCell = null;
+		var selectedBeatCell = null;
+		var selectedPadCell = null;
 
-		function pointerdownPad(cell) {
+		function pdp(cell, index) {
   			cell.style.background = "lightblue";			
 		}
 
-		function mouseleavePad(cell) {
-  			cell.style.background = "white";
-		}
+		function pointerdownBeat(cell) {
 
-		function pointerdownTD(cell) {
-
-			if( selectedCell == cell ) { // if was selected, then clear selection
-				selectedCell = null;
+			if( selectedBeatCell == cell ) { // if was selected, then clear selection
+				selectedBeatCell = null;
 				cell.style.background = "white";
 				popupDiv.style.display = "none";
 			}
 			else { // if wasn't selected, then select the cell
-				if( selectedCell != null ) { // clear any previous selection
-					selectedCell.style.background = "white";
+				if( selectedBeatCell != null ) { // clear any previous selection
+					selectedBeatCell.style.background = "white";
 				}
 
-				selectedCell = cell;
+				selectedBeatCell = cell;
 
 				cell.style.background = "lightblue";
 
@@ -354,18 +352,18 @@ table.popupDiv-table td {
 					}
 
 					if( x == nX-1 ) {
-						htmlRow += `<td onpointerdown="pointerdownTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
 								</td>`;
 					}
 					else if( x == 0 ){
-						htmlRow += `<td onpointerdown="pointerdownTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
 								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="#single_barline"></use>
 								</svg>
 								</td>`;
 							}
 					else if( x % 4 == 0 ) {
-						htmlRow += `<td onpointerdown="pointerdownTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;" >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
@@ -377,7 +375,7 @@ table.popupDiv-table td {
 								</td>`;
 							}
 							else {
-						htmlRow += `<td onpointerdown="pointerdownTD(this)">
+						htmlRow += `<td onpointerdown="pointerdownBeat(this)">
 								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0; " >
 								<use href="${romanNumeralSVG}"></use>
 								<use href="#extension_7"></use>
