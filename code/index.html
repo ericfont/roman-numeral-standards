@@ -44,6 +44,7 @@
 
 <head>
 	<base href="https://romanjazz.com/" target="_blank">
+	<title>RomanJazz: rediscover the forgotten ancient Roman method for understanding jazz songs!</title>
 
 	<style>
 		:root {
@@ -243,18 +244,19 @@ td { padding: 0 0; }
   margin: 1px;                 /* Optional: adds spacing from the edges */
 }
 
-.popupDiv-table {
+.tablePad {
 	height: 100%;
 	width: 100%;
 	margin: 0;
 	border-collapse: separate;
-    background-color: rgb(255, 255, 196);
+    background-color: white;
+	table-layout: fixed;
 }
 
-table.popupDiv-table td {
+table.tablePad td {
     padding: 0px;
     margin: 0px;
-  border: 1px solid #9f981a;
+	border: 1px solid #9f981a;
 	text-align: center;
 	user-select: none;
 }
@@ -280,19 +282,49 @@ table.popupDiv-table td {
 	<div class="tableDiv" id="tableDiv">
 	</div>
 	<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
-		<table id="tablePopupDiv" class="popupDiv-table"><tbody>
-			<tr><td onpointerdown="pdp(this,1)">#</td><td onpointerdown="pdp(this,2)">m1</td><td onpointerdown="pdp(this,3)">m2</td><td onpointerdown="pdp(this,4)">m3</td><td onpointerdown="pdp(this,5)">m4</td><td onpointerdown="pdp(this,6)">m5</td><td onpointerdown="pdp(this,7)">m6</td><td onpointerdown="pdp(this,8)">m7</td><td onpointerdown="pdp(this,9)">|</td></tr>
-			<tr><td onpointerdown="pdp(this,11)">b</td><td onpointerdown="pdp(this,12)">M1</td><td onpointerdown="pdp(this,13)">M2</td><td onpointerdown="pdp(this,14)">M3</td><td onpointerdown="pdp(this,15)">M4</td><td onpointerdown="pdp(this,16)">M5</td><td onpointerdown="pdp(this,17)">M6</td><td onpointerdown="pdp(this,18)">M7</td></tr>
-			</tbody></table>
+		<table id="tablePad" class="tablePad"><tbody></tbody></table>
 	</div>
 
 	<script>
 
+		const tableDiv = document.getElementById("tableDiv");
+		const popupDiv = document.getElementById("popupDiv");
+		const tablePad = document.getElementById("tablePad");
+
+		const padMap = [
+			`♭`, `♯`,
+			`m1`, `M1`,
+			`m2`, `M2`,
+			`m3`, `M3`,
+			`m4`, `M4`,
+			`m5`, `M5`,
+			`m6`, `M6`,
+			`m7`, `M7`,
+			`V7of_`, `modulate`,
+			`ABC`, `123`,
+			`extension`, `barline` ];
+
+		for( var padMapRow = 0; padMapRow < 2; padMapRow++ ) {
+			const row = tablePad.insertRow(); // Adds row to the end of the table
+			for( var padMapCol = 0; padMapCol < 11; padMapCol++ ) {
+				const cell = row.insertCell(); // Adds td to the end of the row
+				const index = padMapRow * 11 + padMapCol;
+				cell.textContent = padMap[index];
+				cell.setAttribute(`onpointerdown`, `pdp(this,${index})`);
+				cell.setAttribute(`style`, `background: white`);
+			}
+		}
+
 		var selectedBeatCell = null;
 		var selectedPadCell = null;
 
-		function pdp(cell, index) {
-  			cell.style.background = "lightblue";			
+		function pdp(cell, index) { // "on Pointer Down for keyPad containing cell at index"
+  			if( cell.style.background == "white" ) {
+				cell.style.background = "lightblue";
+			}
+			else {
+				cell.style.background = "white";
+			}
 		}
 
 		function pointerdownBeat(cell) {
@@ -399,8 +431,6 @@ table.popupDiv-table td {
 		var selectX = -1;
 		var selectY = -1;
 
-		const tableDiv = document.getElementById("tableDiv");
-		const popupDiv = document.getElementById("popupDiv");
 
 		buildTableHTML();
 
