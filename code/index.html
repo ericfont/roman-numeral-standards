@@ -1,340 +1,563 @@
 <!DOCTYPE html>
 <html lang="en">
-  <svg style="display: none">
-    <symbol id="roman_numeral_capital_7">
-      <g stroke="#000" stroke-linecap="round" stroke-width=".1">
-        <path d="m1.4 1h5.3" />
-        <path d="m1.5 7 5.2-0.01" />
-      </g>
-      <g stroke="#000" stroke-width=".5">
-        <path d="m2 1 1 6" />
-        <path d="m4.2 1-1 6" stroke-width=".1" />
-        <path d="m5 1v6" />
-        <path d="m6.1 1v6" />
-      </g>
-    </symbol>
+	<svg style="display: none">
+		<symbol id="Ⅶ">
+			<g stroke="#000" stroke-linecap="round" stroke-width=".1">
+				<path d="m1.4 1h5.3" />
+				<path d="m1.5 7 5.2-0.01" />
+			</g>
+			<g stroke="#000" stroke-width=".5">
+				<path d="m2 1 1 6" />
+				<path d="m4.2 1-1 6" stroke-width=".1" />
+				<path d="m5 1v6" />
+				<path d="m6.1 1v6" />
+			</g>
+		</symbol>
 
-    <symbol id="roman_numeral_capital_6">
-      <g stroke="#000" stroke-linecap="round" stroke-width=".1">
-        <path d="m1.3 1h5.3" />
-        <path d="m1.3 7 5.3-0" />
-        <path d="m4 1-.8 6" />
-      </g>
-      <g stroke="#000" stroke-width=".5">
-        <path d="m2 1 1 6" />
-        <path d="m5.6 1 0 6" />
-      </g>
-    </symbol>
+		<symbol id="Ⅵ">
+			<g stroke="#000" stroke-linecap="round" stroke-width=".1">
+				<path d="m1.3 1h5.3" />
+				<path d="m1.3 7 5.3-0" />
+				<path d="m4 1-.8 6" />
+			</g>
+			<g stroke="#000" stroke-width=".5">
+				<path d="m2 1 1 6" />
+				<path d="m5.6 1 0 6" />
+			</g>
+		</symbol>
 
-    <symbol id="extension_7">
-      <path d="m6.8 0.35h0.91l-0.45 1.8" fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
-    </symbol>
+		<symbol id="Ⅴ">
+			 <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+	<path d="m1.4 1h5.3"/>
+	<path d="m1.5 7 5.2-0.01"/>
+ </g>
+ <g stroke="#000" stroke-width=".5">
+	<path d="m3 1 1 6"/>
+	<path d="m5.2 1-1 6" stroke-width=".1"/>
+ </g>
+		</symbol>
 
-    <symbol id="flat">
-      <path d="m0.7 3.3 0.02 2.9 0.76-0.48 0.28-0.36c0.2-0.64-0.18-0.83-0.3-1-0.43-0.048-0.55 0.26-0.72 0.52"
-        fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
-    </symbol>
+		<symbol id="Ⅳ">
+			 <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+	<path d="m1.4 1h5.3"/>
+	<path d="m1.5 7 5.2-0.01"/>
+ </g>
+ <g stroke="#000" stroke-width=".5">
+	<path d="m3.8 1 1 6"/>
+	<path d="m6 1-1 6" stroke-width=".1"/>
+	<path d="m2.3 1v6"/>
+ </g>
+		</symbol>
 
-    <symbol id="single_barline">
-      <path d="m1 0 0 8" stroke="#000" stroke-width=".1"/>
-    </symbol>
-  </svg>
+		<symbol id="Ⅲ">
+			 <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+	<path d="m1.4 1h5.3"/>
+	<path d="m1.5 7 5.2-0.01"/>
+ </g>
+ <g stroke="#000" stroke-width=".5">
+	<path d="m2.3 1v6"/>
+	<path d="m4.1 0.97v6"/>
+	<path d="m5.9 0.97v6"/>
+ </g>
+		</symbol>
 
-  <head>
-    <base href="https://romanjazz.com/" target="_blank">
-    <title>RomanJazz: rediscover the forgotten ancient Roman method for understanding jazz songs!</title>
+		<symbol id="Ⅱ">
+			 <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+	<path d="m1.4 1h5.3"/>
+	<path d="m1.5 7 5.2-0.01"/>
+ </g>
+ <g stroke="#000" stroke-width=".5">
+	<path d="m2.8 1v6"/>
+	<path d="m5.2 1v6"/>
+ </g>
+		</symbol>
 
-    <style>
-      :root {
-        color-scheme: light dark;
-        --semi-transparent-gray-color: rgba(128, 128, 128, 0.5);
-        --fully-transparent-color: rgba(128, 128, 128, 0);
-        --current-gray-button-color: rgba(128, 128, 128, 0.5);
+		<symbol id="Ⅰ">
+			 <g stroke="#000" stroke-linecap="round" stroke-width=".1">
+	<path d="m1.4 1h5.3"/>
+	<path d="m1.5 7 5.2-0.01"/>
+ </g>
+ <g stroke="#000" stroke-width=".5">
+	<path d="m4.1 1v6"/>
+ </g>
+		</symbol>
 
-        --background-0: light-dark(#ffffff, #000000);
-        --background-1: light-dark(#efefef, #100000);
-        --background-2: light-dark(#dfdfdf, #200000);
-        --background-3: light-dark(#cfcfcf, #300000);
-        --background-4: light-dark(#bfbfbf, #400000);
-        --background-5: light-dark(#afafaf, #500000);
-        --background-6: light-dark(#8f8f8f, #600000);
-        --background-7: light-dark(#7f7f7f, #700000);
-        --foreground-0: light-dark(#000000, #ffffff);
-        --foreground-1: light-dark(#100000, #efffff);
-        --foreground-2: light-dark(#200000, #dfffff);
-        --foreground-3: light-dark(#300000, #cfffff);
-        --foreground-4: light-dark(#400000, #bfffff);
-        --foreground-5: light-dark(#500000, #afffff);
-        --foreground-6: light-dark(#600000, #9fffff);
-        --foreground-7: light-dark(#700000, #8fffff);
-      }
+		<symbol id="fiveof_">
+		 <g stroke="#000">
+	<path d="m0.64 0.68h2.5" stroke-linecap="round" stroke-width=".047"/>
+	<path d="m0.68 3.5 2.4-0.0047" stroke-linecap="round" stroke-width=".047"/>
+	<path d="m1.4 0.68 0.47 2.8" stroke-width=".23"/>
+	<path d="m2.4 0.68-0.47 2.8" stroke-width=".047"/>
+ </g>
+ <g fill="none" stroke-linecap="round">
+	<path d="m3.3 0.42h0.56l-0.37 0.92" stroke="#000" stroke-width=".05"/>
+	<text x="4.9920988" y="3.4481509" font-family="'CMU Serif'" font-size="4.8px" font-style="italic" font-weight="500" stroke="#000000" stroke-width=".1" xml:space="preserve"><tspan x="4.9920988" y="3.4481509" stroke-width=".1"/></text>
+	<path d="m0.58 4.5 6.7-1.9" stroke="#000" stroke-width=".05"/>
+ </g>
+		 </symbol>
 
-      .top-bar-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        max-height: 5dvh;
-      }
+		<symbol id="⁷">
+			<path d="m6.8 0.35h0.91l-0.45 1.8" fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
+		</symbol>
 
-      .top-bar-button {
-        height: 100%;
-        max-width: 25%;
-      }
+		<symbol id="♭">
+			<path d="m0.7 3.3 0.02 2.9 0.76-0.48 0.28-0.36c0.2-0.64-0.18-0.83-0.3-1-0.43-0.048-0.55 0.26-0.72 0.52"
+				fill="none" stroke="#000" stroke-linecap="round" stroke-width=".25" />
+		</symbol>
 
-      .background-color-0 { background-color: var(--background-0); }
-      .background-color-1 { background-color: var(--background-1); }
-      .background-color-2 { background-color: var(--background-2); }
-      .background-color-3 { background-color: var(--background-3); }
-      .background-color-4 { background-color: var(--background-4); }
-      .background-color-5 { background-color: var(--background-5); }
-      .background-color-6 { background-color: var(--background-6); }
-      .background-color-7 { background-color: var(--background-7); }
+		<symbol id="𝄀">
+			<path d="m1 0 0 8" stroke="#000" stroke-width=".1"/>
+		</symbol>
 
-      .foreground-color-0 { color: var(--foreground-0); }
-      .foreground-color-1 { color: var(--foreground-1); }
-      .foreground-color-2 { color: var(--foreground-2); }
-      .foreground-color-3 { color: var(--foreground-3); }
-      .foreground-color-4 { color: var(--foreground-4); }
-      .foreground-color-5 { color: var(--foreground-5); }
-      .foreground-color-6 { color: var(--foreground-6); }
-      .foreground-color-7 { color: var(--foreground-7); }
+		<symbol id="Vof_">
+			 <g transform="matrix(.47 0 0 .47 .72 .5)" stroke="#000" stroke-linecap="round" stroke-width=".1">
+	<path d="m1.4 1h5.3"/>
+	<path d="m1.5 7 5.2-0.01"/>
+ </g>
+ <g transform="matrix(.47 0 0 .47 .72 .5)" stroke="#000" stroke-width=".5">
+	<path d="m3 1 1 6"/>
+	<path d="m5.2 1-1 6" stroke-width=".1"/>
+ </g>
+ <g fill="none" stroke-linecap="round" stroke-width=".1">
+	<path d="m4.1 0.72h0.56l-0.37 0.92" stroke="#000"/>
+	<text x="4.9920988" y="3.4481509" font-family="'CMU Serif'" font-size="4.8px" font-style="italic" font-weight="500" stroke="#000000" xml:space="preserve"><tspan x="4.9920988" y="3.4481509" stroke-width=".1"/></text>
+	<g stroke="#000">
+	 <path d="m4.9 2.3c-0.38 0.027-0.59 0.25-0.63 0.69 0.0085 0.25 0.093 0.76 0.82 0.71 0.32 0.097 0.62-0.35 0.57-0.69-0.048-0.31-0.2-0.73-0.75-0.72z"/>
+	 <path d="m7 1.8c0.17-0.46-0.81-0.73-0.96-0.45-0.28 0.53 0.39 2.7 0.39 2.7l0.017-0.017"/>
+	 <path d="m5.8 2.6 1-0.0086"/>
+	</g>
+ </g>
+		</symbol>
 
-      .left-of-td {
-        position: absolute;
-        right: 100%;
-        bottom: 0%;
-      }
 
-      .section-name {
-        padding: 1px;
-        border: 1px solid light-dark(#000000, #ffffff);
-      }
 
-      .right-justify { text-align: right; }
-      .center-justify { text-align: center; }
+	</svg>
 
-      .right-bar {
-        border-right: 1px solid grey;
-        padding-right: 4px;
-      }
+	<head>
+		<base href="https://romanjazz.com/" target="_blank">
+		<title>RomanJazz.com</title>
 
-      .left-bar {
-        border-left: 1px solid grey;
-        padding-left: 4px;
-      }
+		<style>
+			:root {
+				color-scheme: light dark;
+				--semi-transparent-gray-color: rgba(128, 128, 128, 0.5);
+				--fully-transparent-color: rgba(128, 128, 128, 0);
+				--current-gray-button-color: rgba(128, 128, 128, 0.5);
 
-      .container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-      }
+				--background-0: light-dark(#ffffff, #000000);
+				--background-1: light-dark(#efefef, #100000);
+				--background-2: light-dark(#dfdfdf, #200000);
+				--background-3: light-dark(#cfcfcf, #300000);
+				--background-4: light-dark(#bfbfbf, #400000);
+				--background-5: light-dark(#afafaf, #500000);
+				--background-6: light-dark(#8f8f8f, #600000);
+				--background-7: light-dark(#7f7f7f, #700000);
+				--foreground-0: light-dark(#000000, #ffffff);
+				--foreground-1: light-dark(#100000, #efffff);
+				--foreground-2: light-dark(#200000, #dfffff);
+				--foreground-3: light-dark(#300000, #cfffff);
+				--foreground-4: light-dark(#400000, #bfffff);
+				--foreground-5: light-dark(#500000, #afffff);
+				--foreground-6: light-dark(#600000, #9fffff);
+				--foreground-7: light-dark(#700000, #8fffff);
+			}
 
-      .chord-cell {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        height: 100%;
-      }
+			.top-bar-container {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				max-height: 5dvh;
+			}
 
-      table {
-        border-collapse: separate;
-        border-spacing: 0;
-      }
+			.top-bar-button {
+				height: 100%;
+				max-width: 25%;
+			}
 
-      td {
-        padding: 0;
-      }
+			.background-color-0 { background-color: var(--background-0); }
+			.background-color-1 { background-color: var(--background-1); }
+			.background-color-2 { background-color: var(--background-2); }
+			.background-color-3 { background-color: var(--background-3); }
+			.background-color-4 { background-color: var(--background-4); }
+			.background-color-5 { background-color: var(--background-5); }
+			.background-color-6 { background-color: var(--background-6); }
+			.background-color-7 { background-color: var(--background-7); }
 
-      .tableDiv {
-        position: relative;
-      }
+			.foreground-color-0 { color: var(--foreground-0); }
+			.foreground-color-1 { color: var(--foreground-1); }
+			.foreground-color-2 { color: var(--foreground-2); }
+			.foreground-color-3 { color: var(--foreground-3); }
+			.foreground-color-4 { color: var(--foreground-4); }
+			.foreground-color-5 { color: var(--foreground-5); }
+			.foreground-color-6 { color: var(--foreground-6); }
+			.foreground-color-7 { color: var(--foreground-7); }
 
-      .popupDiv {
-        position: absolute;
-        bottom: 0;
-        width: 99%;
-        z-index: 10;
-        background-color: white;
-        border: 1px solid black;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1px;
-        margin: 1px;
-      }
+			.left-of-td {
+				position: absolute;
+				right: 100%;
+				bottom: 0%;
+			}
 
-      .tablePad {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        border-collapse: separate;
-        background-color: white;
-        table-layout: fixed;
-      }
+			.section-name {
+				padding: 1px;
+				border: 1px solid light-dark(#000000, #ffffff);
+			}
 
-      table.tablePad td {
-        padding: 0;
-        margin: 0;
-        border: 1px solid #9f981a;
-        text-align: center;
-        user-select: none;
-      }
-    </style>
-  </head>
+			.right-justify { text-align: right; }
+			.center-justify { text-align: center; }
 
-  <body style="margin: 0; background-color: var(--background-color-0)">
-    <div class="top-bar-container">
-      <button class="top-bar-button">Prev Song</button>
-      <button class="top-bar-button">Edit Song</button>
-      <button class="top-bar-button">Select Song</button>
-      <button class="top-bar-button">Random Song</button>
-      <button class="top-bar-button">Next Song</button>
-    </div>
+			.right-bar {
+				border-right: 1px solid grey;
+				padding-right: 4px;
+			}
 
-    <div class="top-bar-container">
-      <h2>Lyricist</h2>
-      <h1>Song Title</h1>
-      <h2>Composer</h2>
-    </div>
+			.left-bar {
+				border-left: 1px solid grey;
+				padding-left: 4px;
+			}
 
-    <div class="tableDiv" id="tableDiv"></div>
+			.container {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				width: 100vw;
+				height: 100vh;
+				margin: 0;
+			}
 
-    <div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
-      <table id="tablePad" class="tablePad"><tbody></tbody></table>
-    </div>
+			.chord-cell {
+				display: grid;
+				grid-template-rows: 1fr 1fr;
+				height: 100%;
+			}
 
-    <script>
-      const tableDiv = document.getElementById("tableDiv");
-      const popupDiv = document.getElementById("popupDiv");
-      const tablePad = document.getElementById("tablePad");
+			table {
+				border-collapse: separate;
+				border-spacing: 0;
+			}
 
-      const padMap = [
-        `♭`, `♯`,
-        `m1`, `M1`,
-        `m2`, `M2`,
-        `m3`, `M3`,
-        `m4`, `M4`,
-        `m5`, `M5`,
-        `m6`, `M6`,
-        `m7`, `M7`,
-        `V7of_`, `modulate`,
-        `ABC`, `123`,
-        `extension`, `barline`
-      ];
+			td {
+				padding: 0;
+			}
 
-      for (let padMapRow = 0; padMapRow < 2; padMapRow++) {
-        const row = tablePad.insertRow();
-        for (let padMapCol = 0; padMapCol < 11; padMapCol++) {
-          const cell = row.insertCell();
-          const index = padMapRow + padMapCol * 2;
-          cell.textContent = padMap[index];
-          cell.setAttribute(`onpointerdown`, `pdp(this,${index})`);
-          cell.setAttribute(`style`, `background: white`);
-        }
-      }
+			.tableDiv {
+				position: relative;
+			}
 
-      let selectedBeatCell = null;
-      let selectedPadCell = null;
+			.popupDiv {
+				position: absolute;
+				bottom: 0;
+				width: 99%;
+				z-index: 10;
+				background-color: white;
+				border: 1px solid black;
+				box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1px;
+				margin: 1px;
+			}
 
-      function pdp(cell, index) {
-        if (cell.style.background === "white") {
-          cell.style.background = "lightblue";
-        } else {
-          cell.style.background = "white";
-        }
-      }
+			.tablePad {
+				height: 100%;
+				width: 100%;
+				margin: 0;
+				border-collapse: separate;
+				background-color: white;
+				table-layout: fixed;
+			}
 
-      function pointerdownBeat(cell) {
-        if (selectedBeatCell === cell) {
-          selectedBeatCell = null;
-          cell.style.background = "white";
-          popupDiv.style.display = "none";
-        } else {
-          if (selectedBeatCell !== null) {
-            selectedBeatCell.style.background = "white";
-          }
+			table.tablePad td {
+				padding: 0;
+				margin: 0;
+				border: 1px solid #9f981a;
+				text-align: center;
+				user-select: none;
+			}
+		</style>
+	</head>
 
-          selectedBeatCell = cell;
-          cell.style.background = "lightblue";
+	<body style="margin: 0; background-color: var(--background-color-0)">
+		<div class="top-bar-container">
+			<button class="top-bar-button">Prev Song</button>
+			<button class="top-bar-button">Edit Song</button>
+			<button class="top-bar-button">Select Song</button>
+			<button class="top-bar-button">Random Song</button>
+			<button class="top-bar-button">Next Song</button>
+		</div>
 
-          const cellRect = cell.getBoundingClientRect();
-          const cellTop = cellRect.top;
-          const tableRect = tableDiv.getBoundingClientRect();
-          const tableTop = tableRect.top;
+		<div class="top-bar-container">
+			<h2>Lyricist</h2>
+			<h1>Song Title</h1>
+			<h2>Composer</h2>
+		</div>
 
-          popupDiv.style.display = "block";
-          popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
-        }
-      }
+		<div class="tableDiv" id="tableDiv"></div>
 
-      function buildTableHTML() {
-        const nX = 18;
-        const nY = 10;
-        const maxCellHeight = (80 - (nY - 1)) / nY;
+		<div class="popupDiv" id="popupDiv" style="height: 50px; display: none;">
+			<table id="tablePad" class="tablePad"><tbody></tbody></table>
+		</div>
 
-        let htmlTable = `<table id="tableDiv" style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`;
+		<script>
 
-        for (let y = 0; y < nY; y++) {
-          let htmlRow = `<tr>`;
-          for (let x = 0; x < nX; x++) {
-            let romanNumeralSVG = ``;
-            switch (numeralNumber) {
-              case 6:
-                romanNumeralSVG = `#roman_numeral_capital_6`;
-                break;
-              case 7:
-                romanNumeralSVG = `#roman_numeral_capital_7`;
-                break;
-            }
+			const tableDiv = document.getElementById("tableDiv");
+			const popupDiv = document.getElementById("popupDiv");
+			const tablePad = document.getElementById("tablePad");
 
-            if (x === nX - 1) {
-              htmlRow += `<td onpointerdown="pointerdownBeat(this)"></td>`;
-            } else if (x === 0) {
-              htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-                <svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
-                  <use href="#single_barline"></use>
-                </svg>
-              </td>`;
-            } else if (x % 4 === 0) {
-              htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-                <svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
-                  <use href="${romanNumeralSVG}"></use>
-                  <use href="#extension_7"></use>
-                  <use href="#flat"></use>
-                </svg>
-                <svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
-                  <use href="#single_barline"></use>
-                </svg>
-              </td>`;
-            } else {
-              htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-                <svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
-                  <use href="${romanNumeralSVG}"></use>
-                  <use href="#extension_7"></use>
-                  <use href="#flat"></use>
-                </svg>
-              </td>`;
-            }
-          }
+			const arrayPadIndexToUnicode = [
+				`♭`, `♯`,
+				`m1`, `M1`,
+				`m2`, `M2`,
+				`m3`, `M3`,
+				`m4`, `M4`,
+				`m5`, `M5`,
+				`m6`, `M6`,
+				`m7`, `M7`,
+				`V7of_`, `modulate`,
+				`ABC`, `123`,
+				`extension`, `barline`
+			];
+			const mapUnicodeToPadIndex = new Map();
+			arrayPadIndexToUnicode.forEach((element, index, array) => {
+				mapUnicodeToPadIndex.set(arrayPadIndexToUnicode[index], index);
+			});
 
-          htmlRow += `</tr>`;
-          htmlTable += htmlRow;
-        }
-        htmlTable += `</tbody></table>`;
+			for (let padMapRow = 0; padMapRow < 2; padMapRow++) {
+				const row = tablePad.insertRow();
+				for (let padMapCol = 0; padMapCol < 11; padMapCol++) {
+					const cell = row.insertCell();
+					const index = padMapRow + padMapCol * 2;
+					cell.textContent = arrayPadIndexToUnicode[index];
+					cell.setAttribute(`onpointerdown`, `pdp(this,${index})`);
+					cell.setAttribute(`style`, `background: white`);
+				}
+			}
 
-        tableDiv.innerHTML = htmlTable;
-      }
+			let selectedBeatCell = null;
+			let selectedPadCell = null;
 
-      let numeralNumber = 6;
-      let selectX = -1;
-      let selectY = -1;
+			function pdp(cell, index) {
+				if (cell.style.background === "white") {
+					cell.style.background = "lightblue";
+				} else {
+					cell.style.background = "white";
+				}
+			}
 
-      buildTableHTML();
-    </script>
-  </body>
+			function pointerdownBeat(cell) {
+				if (selectedBeatCell === cell) {
+					selectedBeatCell = null;
+					cell.style.background = "white";
+					popupDiv.style.display = "none";
+				} else {
+					if (selectedBeatCell !== null) {
+						selectedBeatCell.style.background = "white";
+					}
+
+					selectedBeatCell = cell;
+					cell.style.background = "lightblue";
+
+					const cellRect = cell.getBoundingClientRect();
+					const cellTop = cellRect.top;
+					const tableRect = tableDiv.getBoundingClientRect();
+					const tableTop = tableRect.top;
+
+					popupDiv.style.display = "block";
+					popupDiv.style.top = (cellTop - popupDiv.getBoundingClientRect().height + 10) + 'px';
+				}
+			}
+
+class BaseChord {
+	constructor(string) {
+		let i = 0;
+		console.log( string );
+		console.log( string.codePointAt(i) );
+		let nextCode = string.codePointAt(i);
+		if( nextCode >= 0x266D && nextCode <= 0x266F ) {
+			this.accidental = string.charCodeAt(i); // Initialize accidental if exists
+			i++;
+			nextCode = string.charCodeAt(i);
+		}
+		else {
+			this.accidental = null;
+		}
+
+		if( (nextCode >= 0x2160 && nextCode <= 0x2166) ||
+			(nextCode >= 0x2170 && nextCode <= 0x2176) ) {
+				this.numeral = string.charCodeAt(i);
+				i++;
+			}
+		else {
+			this.numeral = null;
+		}
+
+		// if is ':' then suffix indicate start modulation, otherwise if exists is the extension[s] of the chord
+		if( string.length > i ) {
+			this.suffix = string.substring(i);
+		}
+		else {
+			this.suffix = null;
+		}
+	}
+  }
+
+class SecondaryChord { // like a V7/IV for example
+	constructor(upperChord, lowerChord) {
+		this.upperChord = upperChord; // Initialize
+		this.lowerChord = lowerChord; // Initialize
+	}
+}
+
+class SectionName {
+	constructor(string) {
+		this.string;
+	}
+}
+
+const isAsciiCapital = (char) => {
+  const code = char.codePointAt(0);
+  return code >= 65 && code <= 90;
+};
+
+	// a cell could contain either an upper component only (which would be in center if just a chord or on top if section name),
+	// or a lower component only (e.g. if just a modulation new key indicator:), or both an upper and lower component
+class Cell {
+  constructor(string) {
+	this.upperComponent = null;
+	this.lowerComponent = null;
+
+	if(string.length == 0) {
+		return;	// nothing in this cell
+	}
+
+	if( isAsciiCapital(string[0]) ) { // plain ascii for first character indicates is section name
+		this.upperComponent = new SectionName(string.split(" ")[0]);
+		string = string.split(" ")[1]; // for rest of decoding, only focus on stuff after the section name
+		if( string == null ) {
+			return; // no more string to do
+		}
+	}
+
+	if( string[string.length - 1] == ":" ) { // colon indicates modulation
+		this.lowerComponent = new BaseChord(string);
+		return;
+	}
+
+	this.upperComponent = new BaseChord(string);
+
+	for( let i = 0; i< string.length; i++ ) {
+		console.log( string.codePointAt(i) );
+	}
+  }
+}
+
+			const maxSongRows = 50, maxSongCols = 100;
+			const songMatrix = Array.from({ length: maxSongRows }, () => Array(maxSongCols).fill(0));
+
+			const selectedSongIndex = 0;
+
+			function buildTableHTML() {
+
+				const songTitle = charts[selectedSongIndex][0];
+				const songMetadata = charts[selectedSongIndex][1];
+				const songContents = charts[selectedSongIndex][2];
+
+				const songRows = songContents.split('\n');
+
+				var maxRowLength = 0;
+				var numRows = songRows.length;
+
+				for (let y = 0; y < songRows.length; y++) {
+					thisRowCells = songRows[y].split('\t');
+					rowLength = thisRowCells.length;
+					if (rowLength > maxRowLength) {
+						maxRowLength = rowLength;
+					}
+
+					for( let x=0; x<rowLength; x++ ) {
+						songMatrix[y][x] = new Cell(thisRowCells[x]);
+					}
+				}
+
+				const nY = numRows;
+				const nX = maxRowLength;
+				const maxCellHeight = (80 - (nY - 1)) / nY;
+
+				let htmlTable = `<table id="tableDiv" style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`;
+
+				for (let y = 0; y < nY; y++) {
+					let htmlRow = `<tr>`;
+					for (let x = 0; x < nX; x++) {
+						let romanNumeralSVG = ``;
+						switch (numeralNumber) {
+							case 6:
+								romanNumeralSVG = `#Ⅵ`;
+								break;
+							case 7:
+								romanNumeralSVG = `#Ⅶ`;
+								break;
+						}
+
+						if (x === nX - 1) {
+							htmlRow += `<td onpointerdown="pointerdownBeat(this)"></td>`;
+						} else if (x === 0) {
+							htmlRow += `<td onpointerdown="pointerdownBeat(this)">
+								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
+									<use href="#single_barline"></use>
+								</svg>
+							</td>`;
+						} else if (x % 4 === 0) {
+							htmlRow += `<td onpointerdown="pointerdownBeat(this)">
+								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
+									<use href="${romanNumeralSVG}"></use>
+									<use href="#⁷"></use>
+									<use href="#♭"></use>
+								</svg>
+								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
+									<use href="#single_barline"></use>
+								</svg>
+							</td>`;
+						} else {
+							htmlRow += `<td onpointerdown="pointerdownBeat(this)">
+								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
+									<use href="${romanNumeralSVG}"></use>
+									<use href="#⁷"></use>
+									<use href="#♭"></use>
+								</svg>
+							</td>`;
+						}
+					}
+
+					htmlRow += `</tr>`;
+					htmlTable += htmlRow;
+				}
+				htmlTable += `</tbody></table>`;
+
+				tableDiv.innerHTML = htmlTable;
+			}
+
+			let numeralNumber = 6;
+			let selectX = -1;
+			let selectY = -1;
+
+
+const charts = [
+[`All-the-Things-You-Are`, `𝄆AABA+4𝄇 Jerome-Kern 1939`,
+`A₁	ⅵ				ⅱ				Ⅴ⁷				Ⅰ				
+	Ⅳ			 `]/*Ⅲ:	[ⅱ		Ⅴ⁷	Ⅰ	𝄎]
+A₂	Ⅴ:[ⅵ	ⅱ	Ⅴ⁷	Ⅰ
+	Ⅳ	Ⅲ:[ⅱ·Ⅴ⁷	Ⅰ	𝄎]
+B	Ⅶ:[ⅱ	Ⅴ⁷	Ⅰ	𝄎]
+	♭Ⅵ:[ⅱø	Ⅴ⁷	Ⅰ]	Ⅴ⁷/ⅵ
+A₃	ⅵ	ⅱ	Ⅴ⁷	Ⅰ
+	Ⅳ	ⅳ	Ⅰ	♭ⅲ°
+	ⅱ	Ⅴ⁷	Ⅰ	ⅵ:(ⅱø·Ⅴ⁷) */
+];
+
+			buildTableHTML();
+		</script>
+	</body>
 </html>
