@@ -10,6 +10,8 @@ shell=True, capture_output=True, text=True).stdout
 with open('code/index.html', 'r') as input_index_html, open('site/all-charts-tabs.txt', 'w') as output_all_charts_tabs, open('site/index.html', 'w') as output_index_html:
     for line in input_index_html:
 
+        output_index_html.write(line)
+'''
         if "<head>" in line:
             output_index_html.write(f"<head><title>RomanJazz.com chord charts {revision_string}</title>")
         elif "const charts =" in line:
@@ -37,3 +39,5 @@ with open('code/index.html', 'r') as input_index_html, open('site/all-charts-tab
             
     output_index_html.write(f"[``,``,``]\n")
     output_index_html.write("];\nmain();\n</script></body></html>")
+
+'''

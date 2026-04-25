@@ -394,7 +394,7 @@ class BaseChord {
 			this.numeral = null;
 		}
 
-		// if is ':' then suffix indicate start modulation, otherwise if exists is the extension[s] of the chord
+		// if is '[' then suffix indicate start modulation, otherwise if exists is the extension[s] of the chord
 		if( string.length > i ) {
 			this.suffix = string.substring(i);
 		}
@@ -413,7 +413,7 @@ class SecondaryChord { // like a V7/IV for example
 
 class SectionName {
 	constructor(string) {
-		this.string;
+		this.string = string;
 	}
 }
 
@@ -428,6 +428,7 @@ class Cell {
   constructor(string) {
 	this.upperComponent = null;
 	this.lowerComponent = null;
+	this.modulationIncDec = 0; // 0 => no change. +1 => modulation stack will increase by one at end of this cell. -1 => decrease by one
 
 	if(string.length == 0) {
 		return;	// nothing in this cell
@@ -441,9 +442,15 @@ class Cell {
 		}
 	}
 
-	if( string[string.length - 1] == ":" ) { // colon indicates modulation
-		this.lowerComponent = new BaseChord(string);
-		return;
+	if( string[string.length - 1] == "[" ) { // indicates modulation start
+		string = string.substring(0, string.length - 1); // remove that symbol from the string to process
+		this.lowerComponent = new BaseChord(string); // should be prepended by the base chord of the new key
+		this.modulationIncDec = +1;
+		return; // done...shouldn't be anything more left of string to decode
+	}
+	else if( string[string.length - 1] == "]" ) { // indicates modulation end
+		string = string.substring(0, string.length - 1); // remove that symbol from the string to process
+		this.modulationIncDec = -1;
 	}
 
 	this.upperComponent = new BaseChord(string);
@@ -454,8 +461,9 @@ class Cell {
   }
 }
 
+
 			const maxSongRows = 50, maxSongCols = 100;
-			const songMatrix = Array.from({ length: maxSongRows }, () => Array(maxSongCols).fill(0));
+			const songMatrix = Array.from({ length: maxSongRows }, () => Array(maxSongCols).fill(null));
 
 			const selectedSongIndex = 0;
 
@@ -486,75 +494,73 @@ class Cell {
 				const nX = maxRowLength;
 				const maxCellHeight = (80 - (nY - 1)) / nY;
 
-				let htmlTable = `<table id="tableDiv" style="height: 90dvh; width: 100dvw; margin: 0; border-collapse: separate;"><tbody>`;
+				// 1. Create the detached table element
+				const table = document.createElement("table");
+				const tableBody = document.createElement("tbody");
+				table.style.height = '90dvh';
+				table.style.width = '100dvw';
+				table.style.margin = '0';
+				table.style.borderCollapse = 'separate';
+				table.id = 'tableDiv';
 
 				for (let y = 0; y < nY; y++) {
-					let htmlRow = `<tr>`;
+					const row = document.createElement("tr");
 					for (let x = 0; x < nX; x++) {
-						let romanNumeralSVG = ``;
-						switch (numeralNumber) {
-							case 6:
-								romanNumeralSVG = `#Ⅵ`;
-								break;
-							case 7:
-								romanNumeralSVG = `#Ⅶ`;
-								break;
+						const thisCell = songMatrix[y][x];
+
+						if( songMatrix[y][x] === null) {
+							continue;
 						}
 
-						if (x === nX - 1) {
-							htmlRow += `<td onpointerdown="pointerdownBeat(this)"></td>`;
-						} else if (x === 0) {
-							htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
-									<use href="#single_barline"></use>
-								</svg>
-							</td>`;
-						} else if (x % 4 === 0) {
-							htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
-									<use href="${romanNumeralSVG}"></use>
+						romanNumeralSVG = `Ⅶ`;
+    
+						const cell = document.createElement("td");
+
+						
+    					cell.innerHTML = `<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
+									<use href="#${romanNumeralSVG}"></use>
 									<use href="#⁷"></use>
 									<use href="#♭"></use>
 								</svg>
 								<svg viewBox="0 0 2 8" style="float: right; max-width: 20%; max-height: ${maxCellHeight}dvh; margin: 0;">
 									<use href="#single_barline"></use>
-								</svg>
-							</td>`;
-						} else {
-							htmlRow += `<td onpointerdown="pointerdownBeat(this)">
-								<svg viewBox="0 0 8 8" style="max-width: 80%; max-height: ${maxCellHeight}dvh; margin: 0;">
-									<use href="${romanNumeralSVG}"></use>
-									<use href="#⁷"></use>
-									<use href="#♭"></use>
-								</svg>
-							</td>`;
-						}
+								</svg>`;
+   
+						row.appendChild(cell);
 					}
 
-					htmlRow += `</tr>`;
-					htmlTable += htmlRow;
+  					tableBody.appendChild(row);
 				}
-				htmlTable += `</tbody></table>`;
+				table.appendChild(tableBody);
 
-				tableDiv.innerHTML = htmlTable;
+				table.addEventListener('click', (event) => {
+					// 3. Find the closest 'td' element to handle clicks on nested elements (like <span>)
+					const cell = event.target.closest('td');
+
+					// 4. Ensure a cell was actually clicked
+					if (!cell) return;
+
+					pointerdownBeat(cell);
+				});
+
+				document.body.appendChild(table);
 			}
 
-			let numeralNumber = 6;
 			let selectX = -1;
 			let selectY = -1;
-
 
 const charts = [
 [`All-the-Things-You-Are`, `𝄆AABA+4𝄇 Jerome-Kern 1939`,
 `A₁	ⅵ				ⅱ				Ⅴ⁷				Ⅰ				
-	Ⅳ			 `]/*Ⅲ:	[ⅱ		Ⅴ⁷	Ⅰ	𝄎]
+	Ⅳ			Ⅲ[	ⅱ·Ⅴ⁷	Ⅰ	𝄎]
+`] /*
 A₂	Ⅴ:[ⅵ	ⅱ	Ⅴ⁷	Ⅰ
 	Ⅳ	Ⅲ:[ⅱ·Ⅴ⁷	Ⅰ	𝄎]
 B	Ⅶ:[ⅱ	Ⅴ⁷	Ⅰ	𝄎]
 	♭Ⅵ:[ⅱø	Ⅴ⁷	Ⅰ]	Ⅴ⁷/ⅵ
 A₃	ⅵ	ⅱ	Ⅴ⁷	Ⅰ
 	Ⅳ	ⅳ	Ⅰ	♭ⅲ°
-	ⅱ	Ⅴ⁷	Ⅰ	ⅵ:(ⅱø·Ⅴ⁷) */
+	ⅱ	Ⅴ⁷	Ⅰ	ⅵ:(ⅱø·Ⅴ⁷)`/] */
 ];
 
 			buildTableHTML();
